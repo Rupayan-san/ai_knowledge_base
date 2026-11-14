@@ -1,0 +1,27 @@
+{
+  "name": "ai_knowledge_base",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Rupayan-san/ai_knowledge_base#readme",
+  "bugs": {
+    "url": "https://github.com/Rupayan-san/ai_knowledge_base/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rupayan-san/ai_knowledge_base.git"
+  },
+  "license": "ISC",
+  "author": "Rupayan",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.ts"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
