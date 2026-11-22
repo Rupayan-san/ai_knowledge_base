@@ -3,6 +3,10 @@ import { ApiError } from "./apiError.utils.ts";
 import path from "path";
 import fs from "fs";
 
+export type ValidatedFile = Express.Multer.File & {
+    fileType: string;
+};
+
 // Deletes the uploaded file from disk if validation fails
 const deleteUploadedFile = (file: Express.Multer.File | undefined) => {
     if (file?.path && fs.existsSync(file.path)) {
@@ -14,7 +18,7 @@ const deleteUploadedFile = (file: Express.Multer.File | undefined) => {
     }
 };
 
-const file_validator = (file: Express.Multer.File | undefined): string => {
+const file_validator = (file: Express.Multer.File | undefined): ValidatedFile => {
     if (!file) {
         throw new ApiError(400, "No file uploaded");
     }
@@ -28,7 +32,9 @@ const file_validator = (file: Express.Multer.File | undefined): string => {
             throw new ApiError(400, "File signature does not match its extension (corrupted or spoofed file)");
         }
 
-        return file.mimetype;
+        return Object.assign(file, {
+            fileType: file.mimetype,
+        });
     } catch (error) {
         // Clean up invalid file from temp storage so disk doesn't fill up
         deleteUploadedFile(file);

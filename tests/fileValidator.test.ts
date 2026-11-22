@@ -61,8 +61,8 @@ runTest("1. Valid PDF file", () => {
     const file = createMockFile("valid.pdf", "application/pdf", pdfBuffer);
     const result = fileValidator(file);
 
-    if (result !== "application/pdf") {
-        throw new Error(`Expected 'application/pdf', got '${result}'`);
+    if (result.fileType !== "application/pdf") {
+        throw new Error(`Expected 'application/pdf', got '${result.fileType}'`);
     }
 });
 
@@ -80,8 +80,8 @@ runTest("2. Valid DOCX file", () => {
     );
     const result = fileValidator(file);
 
-    if (!result.includes("wordprocessingml") && !result.includes("zip")) {
-        throw new Error(`Unexpected MIME result: '${result}'`);
+    if (!result.fileType.includes("wordprocessingml") && !result.fileType.includes("zip")) {
+        throw new Error(`Unexpected MIME result: '${result.fileType}'`);
     }
 });
 
@@ -90,8 +90,8 @@ runTest("3. Valid normal .txt file", () => {
     const file = createMockFile("notes.txt", "text/plain", "This is a regular note.");
     const result = fileValidator(file);
 
-    if (result !== "text/plain") {
-        throw new Error(`Expected 'text/plain', got '${result}'`);
+    if (result.fileType !== "text/plain") {
+        throw new Error(`Expected 'text/plain', got '${result.fileType}'`);
     }
 });
 
@@ -100,8 +100,8 @@ runTest("4. Short .txt file (< 8 characters)", () => {
     const file = createMockFile("short.txt", "text/plain", "Hi");
     const result = fileValidator(file);
 
-    if (result !== "text/plain") {
-        throw new Error(`Expected 'text/plain', got '${result}'`);
+    if (result.fileType !== "text/plain") {
+        throw new Error(`Expected 'text/plain', got '${result.fileType}'`);
     }
 });
 
