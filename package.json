@@ -16,15 +16,18 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --watch index.ts",
-    "test": "node tests/fileValidator.test.ts"
+    "test": "node tests/fileValidator.test.ts && node tests/textExtractor.test.ts"
   },
   "dependencies": {
     "@types/express": "^5.0.6",
     "@types/multer": "^2.3.0",
     "express": "^5.3.0",
-    "multer": "^2.5.0"
+    "mammoth": "^1.13.0",
+    "multer": "^2.5.0",
+    "pdf-parse": "^2.4.5"
   },
   "devDependencies": {
+    "@types/pdf-parse": "^1.1.5",
     "typescript": "^7.0.2"
   }
 }
