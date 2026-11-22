@@ -15,7 +15,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch index.ts"
+    "dev": "node --watch index.ts",
+    "test": "node tests/fileValidator.test.ts"
   },
   "dependencies": {
     "@types/express": "^5.0.6",
