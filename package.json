@@ -16,7 +16,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --watch index.ts",
-    "test": "node tests/fileValidator.test.ts && node tests/textExtractor.test.ts && node tests/textSplitter.test.ts"
+    "test": "node tests/fileValidator.test.ts && node tests/textExtractor.test.ts && node tests/textSplitter.test.ts && node tests/embedding.test.ts"
   },
   "dependencies": {
     "@langchain/core": "^1.5.1",
